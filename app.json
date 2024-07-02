@@ -1,0 +1,11 @@
+
+{
+  "expo": {
+    "name": "my-react-native-app",
+    "slug": "my-react-native-app",
+    "version": "1.0.0",
+    "sdkVersion": "48.0.0",
+    "platforms": ["ios", "android", "web"],
+    "assetBundlePatterns": ["**/*"]
+  }
+}
