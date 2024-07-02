@@ -1,37 +1,41 @@
 import React from 'react';
-import { Button as PaperButton, Text } from 'react-native-paper';
+import { Button as PaperButton, Text, useTheme } from 'react-native-paper';
 import { View } from 'react-native';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/native';
 
 const HomeScreen = () => {
+  const theme = useTheme();
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.appName}>App Name</Text>
-      <PaperButton mode="contained" onPress={() => console.log('Pressed')}>Logar</PaperButton>
-      <Text style={styles.cadastreSe}>Cadastre-se</Text>
+    <View style={containerStyle(theme)}>
+      <Text style={appNameStyle(theme)}>App Name</Text>
+      <PaperButton mode="contained" onPress={() => console.log('Pressed')} color={theme.colors.logar}>
+        Logar
+      </PaperButton>
+      <Text style={cadastreSeStyle(theme)}>Cadastre-se</Text>
     </View>
   );
 };
 
-const styles = {
-  container: css`
-    flex: 1;
-    justify-content: center;
-    align-items: center;
-    background-color: ${props => props.theme.colors.background};
-  `,
-  appName: css`
-    color: ${props => props.theme.colors.appName};
-    font-size: 24px;
-    margin-bottom: 20px;
-  `,
-  cadastreSe: css`
-    color: ${props => props.theme.colors.cadastreSe};
-    margin-top: 20px;
-    text-decoration: underline;
-    text-decoration-color: ${props => props.theme.colors.underline};
-  `,
-};
+const containerStyle = (theme) => css`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  background-color: ${theme.colors.primary};
+`;
+
+const appNameStyle = (theme) => css`
+  color: ${theme.colors.appName};
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+const cadastreSeStyle = (theme) => css`
+  color: ${theme.colors.cadastreSe};
+  margin-top: 20px;
+  text-decoration: underline;
+  text-decoration-color: ${theme.colors.underline};
+`;
 
 export default HomeScreen;

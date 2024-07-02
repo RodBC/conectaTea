@@ -6,11 +6,9 @@ import { theme } from './styles/theme';
 
 const App = () => {
   return (
-    <EmotionThemeProvider theme={theme}>
       <PaperProvider theme={theme}>
         <HomeScreen />
       </PaperProvider>
-    </EmotionThemeProvider>
   );
 };
 
