@@ -11,11 +11,17 @@
   "dependencies": {
     "@emotion/native": "^11.0.0",
     "@emotion/react": "^11.0.0",
+    "@react-native-segmented-control/segmented-control": "^2.5.2",
+    "@react-navigation/native": "^6.1.17",
+    "@react-navigation/stack": "^6.4.0",
     "expo": "^48.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "0.71.14",
     "react-native-paper": "^4.0.0",
+    "react-native-reanimated": "^3.13.0",
+    "react-native-safe-area-context": "4.5.0",
+    "react-native-screens": "~3.20.0",
     "react-native-web": "~0.18.11"
   },
   "devDependencies": {
