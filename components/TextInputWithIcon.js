@@ -24,14 +24,16 @@ const styles = {
     align-items: center;
     border-bottom-width: 1px;
     border-bottom-color: #6F6F6F;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
+    width: 80%;
+    align-self: center;
   `,
   icon: css`
-    padding: 10px;
+    padding: 2%;
   `,
   input: css`
     flex: 1;
-    padding: 10px;
+    padding: 2%;
     font-size: 16px;
     color: #000000;
   `,
