@@ -1,16 +1,33 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@emotion/react';
 
-const ConsultaCard = ({ title, name, image }) => {
+const AtividadeCard = ({ title, rating, image }) => {
   const theme = useTheme();
+  const renderStars = () => {
+    const stars = [];
+    for (let i = 0; i < 3; i++) {
+      stars.push(
+        <Ionicons
+          key={i}
+          name={i < rating ? "star" : "star-outline"}
+          size={20}
+          color={i < rating ? "#FFD700" : "#E0E0E0"} // Yellow for filled stars
+        />
+      );
+    }
+    return stars;
+  };
 
   return (
     <View style={[styles.card, { backgroundColor: theme.colors.primary }]}>
       <Image source={image} style={styles.image} resizeMode="contain" />
       <View style={styles.textContainer}>
         <Text style={[styles.title, { color: theme.colors.surface }]}>{title}</Text>
-        <Text style={[styles.name, { color: theme.colors.surface }]}>{name}</Text>
+        <View style={styles.ratingContainer}>
+          {renderStars()}
+        </View>
       </View>
     </View>
   );
@@ -28,24 +45,25 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    height: '100%', 
+    height: '30%', // Usando porcentagem do espaço disponível
     width: '100%',
   },
   image: {
-    width: '20%', 
-    height: '80%', 
+    width: '20%', // Usando porcentagem do espaço disponível
+    height: '80%', // Usando porcentagem do espaço disponível
   },
   textContainer: {
     marginLeft: '5%',
-    width: '75%', 
+    width: '75%', // Usando porcentagem do espaço disponível
   },
   title: {
     fontSize: 18,
     fontWeight: 'bold',
   },
-  name: {
-    fontSize: 14,
+  ratingContainer: {
+    flexDirection: 'row',
+    marginTop: 5,
   },
 });
 
-export default ConsultaCard;
+export default AtividadeCard;

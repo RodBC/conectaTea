@@ -7,6 +7,7 @@ import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import ConsultaScreen from './screens/ConsultaScreen';
+import AtividadeScreen from './screens/AtividadeScreen';
 import { theme } from './styles/theme';
 
 const Stack = createStackNavigator();
@@ -20,6 +21,7 @@ const App = () => {
             <Stack.Screen name="Splash" component={SplashScreen} />
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Consulta" component={ConsultaScreen} />
+            <Stack.Screen name="Atividade" component={AtividadeScreen} />
           </Stack.Navigator>
         </PaperProvider>
       </EmotionThemeProvider>
