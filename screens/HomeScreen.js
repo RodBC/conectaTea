@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
   const [loginVisible, setLoginVisible] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
 
   const handleLoginPress = () => {
     setLoginVisible(true);
@@ -47,15 +47,15 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const handleLogin = () => {
-    navigation.navigate('Consulta', { userName });
+    navigation.navigate('Consulta', { userEmail });
   };
 
   const renderRegisterFields = () => {
     if (selectedIndex === 0) {
       return (
         <>
-          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" onChangeText={setUserName} />
-          <TextInputWithIcon iconName="mail-outline" placeholder="Email" />
+          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" />
+          <TextInputWithIcon iconName="mail-outline" placeholder="Email" onChangeText={setUserEmail} />
           <TextInputWithIcon iconName="lock-closed-outline" placeholder="Senha" secureTextEntry />
           <TextInputWithIcon iconName="lock-closed-outline" placeholder="Confirmar Senha" secureTextEntry />
         </>
@@ -63,7 +63,7 @@ const HomeScreen = ({ navigation }) => {
     } else {
       return (
         <>
-          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" onChangeText={setUserName} />
+          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" />
           <TextInputWithIcon iconName="calendar-outline" placeholder="Idade" />
           <TextInputWithIcon iconName="person-outline" placeholder="Nome do Pai" />
           <TextInputWithIcon iconName="person-outline" placeholder="Nome da Mãe" />
@@ -99,16 +99,16 @@ const HomeScreen = ({ navigation }) => {
           </>
         ) : loginVisible ? (
           <View style={{ padding: '10%' }}>
-            <TextInputWithIcon iconName="mail-outline" placeholder="Email" />
+            <TextInputWithIcon iconName="mail-outline" placeholder="Email" onChangeText={setUserEmail} />
             <TextInputWithIcon iconName="lock-closed-outline" placeholder="Senha" secureTextEntry />
             <Button onPress={handleLogin}>
               <ButtonText>Logar</ButtonText>
             </Button>
             <TouchableOpacity onPress={handleRegisterPress}>
-              <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Esqueceu sua senha?</Text>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={handleRegisterPress} style={{ marginTop: '10%' }}>
-            <Text style={{ color: theme.colors.cadastreSe }}>Cadastrar-se</Text>
+            <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Esqueceu sua senha?</Text>
+               </TouchableOpacity>
+               <TouchableOpacity onPress={handleRegisterPress} style={{ marginTop: '10%' }}>
+                 <Text style={{ color: theme.colors.cadastreSe }}>Cadastrar-se</Text>
                </TouchableOpacity>
              </View>
            ) : (
