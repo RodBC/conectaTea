@@ -8,12 +8,13 @@ import TextInputWithIcon from '../components/TextInputWithIcon';
 
 const { height } = Dimensions.get('window');
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const theme = useTheme();
   const [animatedHeight] = useState(new Animated.Value(height * 0.5));
   const [loginVisible, setLoginVisible] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [userName, setUserName] = useState('');
 
   const handleLoginPress = () => {
     setLoginVisible(true);
@@ -45,11 +46,15 @@ const HomeScreen = () => {
     }).start();
   };
 
+  const handleLogin = () => {
+    navigation.navigate('Consulta', { userName });
+  };
+
   const renderRegisterFields = () => {
     if (selectedIndex === 0) {
       return (
         <>
-          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" />
+          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" onChangeText={setUserName} />
           <TextInputWithIcon iconName="mail-outline" placeholder="Email" />
           <TextInputWithIcon iconName="lock-closed-outline" placeholder="Senha" secureTextEntry />
           <TextInputWithIcon iconName="lock-closed-outline" placeholder="Confirmar Senha" secureTextEntry />
@@ -58,7 +63,7 @@ const HomeScreen = () => {
     } else {
       return (
         <>
-          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" />
+          <TextInputWithIcon iconName="person-outline" placeholder="Nome Completo" onChangeText={setUserName} />
           <TextInputWithIcon iconName="calendar-outline" placeholder="Idade" />
           <TextInputWithIcon iconName="person-outline" placeholder="Nome do Pai" />
           <TextInputWithIcon iconName="person-outline" placeholder="Nome da Mãe" />
@@ -96,55 +101,55 @@ const HomeScreen = () => {
           <View style={{ padding: '10%' }}>
             <TextInputWithIcon iconName="mail-outline" placeholder="Email" />
             <TextInputWithIcon iconName="lock-closed-outline" placeholder="Senha" secureTextEntry />
-            <Button>
+            <Button onPress={handleLogin}>
               <ButtonText>Logar</ButtonText>
             </Button>
-            <TouchableOpacity onPress={console.log("clicou em esqueceu a senha, atualizar aqui")}>
+            <TouchableOpacity onPress={handleRegisterPress}>
               <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Esqueceu sua senha?</Text>
             </TouchableOpacity>
             <TouchableOpacity onPress={handleRegisterPress} style={{ marginTop: '10%' }}>
-              <Text style={{ color: theme.colors.cadastreSe }}>Cadastrar-se</Text>
-            </TouchableOpacity>
-          </View>
-        ) : (
-          <View style={{ padding: '10%' }}>
-            <SegmentedControl
-              values={['Profissional', 'Pais']}
-              selectedIndex={selectedIndex}
-              onChange={(event) => setSelectedIndex(event.nativeEvent.selectedSegmentIndex)}
-              style={{ marginBottom: '5%' }}
-            />
-            {renderRegisterFields()}
-            <Button>
-              <ButtonText>Cadastrar</ButtonText>
-            </Button>
-            <TouchableOpacity onPress={handleBackPress}>
-              <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Voltar</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      </Animated.View>
-    </View>
-  );
-};
+            <Text style={{ color: theme.colors.cadastreSe }}>Cadastrar-se</Text>
+               </TouchableOpacity>
+             </View>
+           ) : (
+             <View style={{ padding: '10%' }}>
+               <SegmentedControl
+                 values={['Profissional', 'Pais']}
+                 selectedIndex={selectedIndex}
+                 onChange={(event) => setSelectedIndex(event.nativeEvent.selectedSegmentIndex)}
+                 style={{ marginBottom: '5%' }}
+               />
+               {renderRegisterFields()}
+               <Button>
+                 <ButtonText>Cadastrar</ButtonText>
+               </Button>
+               <TouchableOpacity onPress={handleBackPress}>
+                 <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Voltar</Text>
+               </TouchableOpacity>
+             </View>
+           )}
+         </Animated.View>
+       </View>
+     );
+   };
 
-const styles = StyleSheet.create({
-  imageContainer: {
-    alignItems: 'center',
-    marginBottom: '5%',
-  },
-  profileIcon: {
-    borderRadius: 50,
-    backgroundColor: '#E0E0E0',
-    padding: '10%',
-  },
-  imageUpload: {
-    marginTop: '3%',
-  },
-  imageUploadText: {
-    color: '#6F6F6F',
-    textDecorationLine: 'underline',
-  },
-});
+   const styles = StyleSheet.create({
+     imageContainer: {
+       alignItems: 'center',
+       marginBottom: '5%',
+     },
+     profileIcon: {
+       borderRadius: 50,
+       backgroundColor: '#E0E0E0',
+       padding: '10%',
+     },
+     imageUpload: {
+       marginTop: '3%',
+     },
+     imageUploadText: {
+       color: '#6F6F6F',
+       textDecorationLine: 'underline',
+     },
+   });
 
-export default HomeScreen;
+   export default HomeScreen;
