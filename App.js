@@ -8,6 +8,7 @@ import SplashScreen from './screens/SplashScreen';
 import HomeScreen from './screens/HomeScreen';
 import ConsultaScreen from './screens/ConsultaScreen';
 import AtividadeScreen from './screens/AtividadeScreen';
+import AtividadeDetalhesScreen from './screens/AtividadeDetalhesScreen';
 import { theme } from './styles/theme';
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ const App = () => {
             <Stack.Screen name="Home" component={HomeScreen} />
             <Stack.Screen name="Consulta" component={ConsultaScreen} />
             <Stack.Screen name="Atividade" component={AtividadeScreen} />
+            <Stack.Screen name="AtividadeDetalhes" component={AtividadeDetalhesScreen} />
           </Stack.Navigator>
         </PaperProvider>
       </EmotionThemeProvider>
@@ -30,3 +32,7 @@ const App = () => {
 };
 
 export default App;
+
+
+
+

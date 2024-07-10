@@ -45,16 +45,16 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
-    height: '30%', // Usando porcentagem do espaço disponível
+    height: '100%', 
     width: '100%',
   },
   image: {
-    width: '20%', // Usando porcentagem do espaço disponível
-    height: '80%', // Usando porcentagem do espaço disponível
+    width: '20%', 
+    height: '80%', 
   },
   textContainer: {
     marginLeft: '5%',
-    width: '75%', // Usando porcentagem do espaço disponível
+    width: '75%', 
   },
   title: {
     fontSize: 18,
