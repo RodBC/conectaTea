@@ -38,6 +38,10 @@ const AtividadeScreen = ({ route, navigation }) => {
     console.log("touched home button")
     navigation.navigate('Home');
   };
+  console.log(route.params.userTypePassing)
+  // route.params.userType == 'Pais' ? <<< temos essa info, agora é usar pra
+  // distringuir o que vai exibir, se vai mostrar as atividades ou os pacientes
+
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>

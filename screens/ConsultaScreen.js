@@ -35,18 +35,21 @@ const mockConsultasProfissional = [
 ];
 
 const ConsultaScreen = ({ route, navigation }) => {
+  var userTypePassing = route.params.userType
   const theme = useTheme();
   const [consultas, setConsultas] = useState([]);
   
   useEffect(() => {
+    userTypePassing = route.params.userType
     route.params.userType == 'Pais' ? setConsultas(mockConsultasPais) 
     : setConsultas(mockConsultasProfissional);
   }, []);
 
 
   const handleCardPress = (therapistName) => {
-    navigation.navigate('Atividade', { therapistName });
-  };
+    navigation.navigate('Atividade', { therapistName, userTypePassing });
+  }; //função que leva ate pagina de atividades ou de pacientes,
+
   const handleInicioPress = () => {
     console.log("touched home button")
     navigation.navigate('Home');
