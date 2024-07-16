@@ -34,6 +34,10 @@ const ConsultaScreen = ({ route, navigation }) => {
   const handleCardPress = (therapistName) => {
     navigation.navigate('Atividade', { therapistName });
   };
+  const handleInicioPress = () => {
+    console.log("touched home button")
+    navigation.navigate('Home');
+  };
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
