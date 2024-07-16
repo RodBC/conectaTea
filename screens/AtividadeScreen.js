@@ -21,14 +21,27 @@ const mockAtividades = [
     image: require('../assets/atividade3.png')
   }
 ];
+const mockPacientes = [
+  {
+    title: "Paciente 1",
+    rating: 3,
+    image: require('../assets/atividade1.png')
+  },
+  {
+    title: "Paciente 2",
+    rating: 1,
+    image: require('../assets/atividade2.png')
+  },
+];
 
 const AtividadeScreen = ({ route, navigation }) => {
   const { therapistName } = route.params;
   const theme = useTheme();
-  const [atividades, setAtividades] = useState([]);
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    setAtividades(mockAtividades);
+    route.params.userTypePassing == 'Pais' ? setCards(mockAtividades) 
+    : setCards(mockPacientes);
   }, []);
 
   const handleAtividadePress = (therapistName) => {
@@ -38,9 +51,6 @@ const AtividadeScreen = ({ route, navigation }) => {
     console.log("touched home button")
     navigation.navigate('Home');
   };
-  console.log(route.params.userTypePassing)
-  // route.params.userType == 'Pais' ? <<< temos essa info, agora é usar pra
-  // distringuir o que vai exibir, se vai mostrar as atividades ou os pacientes
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
@@ -52,7 +62,7 @@ const AtividadeScreen = ({ route, navigation }) => {
       </View>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
    
-        {atividades.map((atividade, index) => (
+        {cards.map((atividade, index) => (
 
           <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.name)} style={styles.cardContainer}>
           
