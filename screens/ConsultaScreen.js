@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '@emotion/react';
 import ConsultaCard from '../components/ConsultaCard';
 
-const mockConsultas = [
+const mockConsultasPais = [
   {
     title: "Terapeuta",
     name: "Nome da Terapeuta",
@@ -21,15 +21,28 @@ const mockConsultas = [
     image: require('../assets/fonoaudiologo.png')
   }
 ];
+const mockConsultasProfissional = [
+  {
+    title: "Pacientes",
+    name: "lista de pacientes",
+    image: require('../assets/terapeuta.png')
+  },
+  {
+    title: "Cadastrar Paciente",
+    name: "cadastrar aqui nome do paciente",
+    image: require('../assets/psicologo.png')
+  },
+];
 
 const ConsultaScreen = ({ route, navigation }) => {
-  const { userEmail } = route.params;
   const theme = useTheme();
   const [consultas, setConsultas] = useState([]);
-
+  
   useEffect(() => {
-    setConsultas(mockConsultas);
+    route.params.userType == 'Pais' ? setConsultas(mockConsultasPais) 
+    : setConsultas(mockConsultasProfissional);
   }, []);
+
 
   const handleCardPress = (therapistName) => {
     navigation.navigate('Atividade', { therapistName });
@@ -44,6 +57,7 @@ const ConsultaScreen = ({ route, navigation }) => {
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
         <Text style={[styles.headerText, { color: theme.colors.surface }]}>{"userEmail"}</Text>
       </View>
+      
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         {consultas.map((consulta, index) => (
           <TouchableOpacity
@@ -55,20 +69,15 @@ const ConsultaScreen = ({ route, navigation }) => {
           </TouchableOpacity>
         ))}
       </ScrollView>
-      <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
         
+      <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
       <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
           <Ionicons name="home-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Principal</Text>
-
         </TouchableOpacity>
-        
-        
         <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
-          
           <Ionicons name="settings-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Configurações</Text>
-        
         </TouchableOpacity>
       </View>
     </View>
