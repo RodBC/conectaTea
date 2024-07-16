@@ -99,12 +99,18 @@ const HomeScreen = ({ navigation }) => {
           </>
         ) : loginVisible ? (
           <View style={{ padding: '10%' }}>
+               <SegmentedControl
+                 values={['Profissional', 'Pais']}
+                 selectedIndex={selectedIndex}
+                 onChange={(event) => setSelectedIndex(event.nativeEvent.selectedSegmentIndex)}
+                 style={{ marginBottom: '5%' }}
+               />
             <TextInputWithIcon iconName="mail-outline" placeholder="Email" onChangeText={setUserEmail} />
             <TextInputWithIcon iconName="lock-closed-outline" placeholder="Senha" secureTextEntry />
             <Button onPress={handleLogin}>
               <ButtonText>Logar</ButtonText>
             </Button>
-            <TouchableOpacity onPress={handleRegisterPress}>
+            <TouchableOpacity onPress={() => console.log('esqueceu senha')}>
             <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Esqueceu sua senha?</Text>
                </TouchableOpacity>
                <TouchableOpacity onPress={handleRegisterPress} style={{ marginTop: '10%' }}>
@@ -123,7 +129,7 @@ const HomeScreen = ({ navigation }) => {
                <Button>
                  <ButtonText>Cadastrar</ButtonText>
                </Button>
-               <TouchableOpacity onPress={handleBackPress}>
+               <TouchableOpacity onPress={() => setLoginVisible(true)}>
                  <Text style={{ color: theme.colors.primary, marginTop: '5%' }}>Voltar</Text>
                </TouchableOpacity>
              </View>
