@@ -34,7 +34,10 @@ const AtividadeScreen = ({ route, navigation }) => {
   const handleAtividadePress = (therapistName) => {
     navigation.navigate('AtividadeDetalhes', { therapistName });
   };
-
+  const handleInicioPress = () => {
+    console.log("touched home button")
+    navigation.navigate('Home');
+  };
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
@@ -56,14 +59,21 @@ const AtividadeScreen = ({ route, navigation }) => {
         ))}
       </ScrollView>
       <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
-        <View style={styles.footerItem}>
+
+        <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
           <Ionicons name="home-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Principal</Text>
-        </View>
-        <View style={styles.footerItem}>
+
+        </TouchableOpacity>
+        
+        
+        <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
+          
           <Ionicons name="settings-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Configurações</Text>
-        </View>
+        
+        </TouchableOpacity>
+        
       </View>
     </View>
   );

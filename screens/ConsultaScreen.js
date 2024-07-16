@@ -52,14 +52,20 @@ const ConsultaScreen = ({ route, navigation }) => {
         ))}
       </ScrollView>
       <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
-        <View style={styles.footerItem}>
+        
+      <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
           <Ionicons name="home-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Principal</Text>
-        </View>
-        <View style={styles.footerItem}>
+
+        </TouchableOpacity>
+        
+        
+        <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
+          
           <Ionicons name="settings-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Configurações</Text>
-        </View>
+        
+        </TouchableOpacity>
       </View>
     </View>
   );
