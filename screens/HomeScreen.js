@@ -36,18 +36,10 @@ const HomeScreen = ({ navigation }) => {
     }).start();
   };
 
-  const handleBackPress = () => {
-    setLoginVisible(false);
-    setRegisterVisible(false);
-    Animated.timing(animatedHeight, {
-      toValue: height * 0.5,
-      duration: 500,
-      useNativeDriver: false,
-    }).start();
-  };
-
   const handleLogin = () => {
-    navigation.navigate('Consulta', { userEmail });
+    const userType = selectedIndex === 0 ? 'Profissional' : 'Pais';
+    console.log(userType)
+    navigation.navigate('Consulta', { userEmail, userType  });
   };
 
   const renderRegisterFields = () => {
