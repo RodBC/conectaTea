@@ -38,7 +38,6 @@ const HomeScreen = ({ navigation }) => {
 
   const handleLogin = () => {
     const userType = selectedIndex === 0 ? 'Profissional' : 'Pais';
-    console.log(userType)
     navigation.navigate('Consulta', { userEmail, userType  });
   };
 

@@ -25,33 +25,32 @@ const mockConsultasProfissional = [
   {
     title: "Pacientes",
     name: "lista de pacientes",
-    image: require('../assets/terapeuta.png')
+    image: require('../assets/pacientes.png')
   },
   {
     title: "Cadastrar Paciente",
     name: "cadastrar aqui nome do paciente",
-    image: require('../assets/psicologo.png')
+    image: require('../assets/cadastro_paciente.png')
   },
 ];
 
 const ConsultaScreen = ({ route, navigation }) => {
-  var userTypePassing = route.params.userType
   const theme = useTheme();
-  const [consultas, setConsultas] = useState([]);
-  
+  const { therapistName } = route.params;
+  const [consultas, setConsultas] = useState([]);  
+
   useEffect(() => {
-    userTypePassing = route.params.userType
     route.params.userType == 'Pais' ? setConsultas(mockConsultasPais) 
     : setConsultas(mockConsultasProfissional);
   }, []);
 
 
   const handleCardPress = (therapistName) => {
-    navigation.navigate('Atividade', { therapistName, userTypePassing });
+    var userType = route.params.userType;
+    navigation.navigate('AtividadeScreen', { therapistName, userType });
   }; //função que leva ate pagina de atividades ou de pacientes,
 
   const handleInicioPress = () => {
-    console.log("touched home button")
     navigation.navigate('Home');
   };
 

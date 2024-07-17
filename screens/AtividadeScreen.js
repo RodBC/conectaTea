@@ -25,30 +25,32 @@ const mockPacientes = [
   {
     title: "Paciente 1",
     rating: 3,
-    image: require('../assets/atividade1.png')
+    image: require('../assets/pacientes.png')
   },
   {
     title: "Paciente 2",
     rating: 1,
-    image: require('../assets/atividade2.png')
+    image: require('../assets/pacientes.png')
   },
 ];
 
 const AtividadeScreen = ({ route, navigation }) => {
   const { therapistName } = route.params;
+  var userType = route.params.userType
+
   const theme = useTheme();
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    route.params.userTypePassing == 'Pais' ? setCards(mockAtividades) 
+    route.params.userType == 'Pais' ? setCards(mockAtividades) 
     : setCards(mockPacientes);
   }, []);
 
   const handleAtividadePress = (therapistName) => {
-    navigation.navigate('AtividadeDetalhes', { therapistName });
+    var userType = route.params.userType
+    navigation.navigate('AtividadeDetalhes', { userType, therapistName });
   };
   const handleInicioPress = () => {
-    console.log("touched home button")
     navigation.navigate('Home');
   };
 
@@ -64,7 +66,8 @@ const AtividadeScreen = ({ route, navigation }) => {
    
         {cards.map((atividade, index) => (
 
-          <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.name)} style={styles.cardContainer}>
+          <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.name)} 
+          style={userType == 'Pais' ? styles.cardContainer : styles.cardContainerPaciente}>
           
           <AtividadeCard key={index} title={atividade.title} rating={atividade.rating} image={atividade.image}/>
           
@@ -113,6 +116,10 @@ const styles = StyleSheet.create({
   },
   cardContainer: {
     height: '30%',
+    marginBottom: '5%', 
+  },
+  cardContainerPaciente: {
+    height: '15%',
     marginBottom: '5%', 
   },
   footer: {

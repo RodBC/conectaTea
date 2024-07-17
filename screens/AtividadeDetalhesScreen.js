@@ -15,10 +15,7 @@ const AtividadeDetalhes = () => {
         <Text style={styles.label}>Descrição da atividade</Text>
         <TextInput style={[styles.input, { borderColor: theme.colors.primary }]} multiline />
       </View>
-      <View style={styles.inputContainer}>
-        <Text style={styles.label}>Materiais adicionais</Text>
-        <TextInput style={[styles.input, { borderColor: theme.colors.primary }]} multiline />
-      </View>
+
       <View style={styles.inputContainer}>
         <Text style={styles.label}>Como a criança se sentiu?</Text>
         <TextInput style={[styles.input, { borderColor: theme.colors.primary }]} multiline />
@@ -34,12 +31,6 @@ const AtividadeDetalhes = () => {
   );
 };
 
-const Videos = () => (
-  <View style={styles.container}>
-    <Text>Videos Section</Text>
-  </View>
-);
-
 const Comentarios = () => (
   <View style={styles.container}>
     <Text>Comentarios Section</Text>
@@ -48,6 +39,8 @@ const Comentarios = () => (
 
 const AtividadeDetalhesScreen = ({ route, navigation }) => {
   const { atividadeTitle } = route.params;
+  const { userType } = route.params;
+
   const theme = useTheme();
 
   return (
@@ -65,7 +58,6 @@ const AtividadeDetalhesScreen = ({ route, navigation }) => {
         }}
       >
         <Tab.Screen name="Atividade" component={AtividadeDetalhes} />
-        <Tab.Screen name="Videos" component={Videos} />
         <Tab.Screen name="Comentários" component={Comentarios} />
       </Tab.Navigator>
     </View>
