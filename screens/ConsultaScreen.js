@@ -57,7 +57,7 @@ const ConsultaScreen = ({ route, navigation }) => {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
-        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{` bem vindo ${userEmail}!`}</Text>
+        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{` bem vindo, ${userEmail}!`}</Text>
       </View>
       
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
