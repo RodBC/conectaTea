@@ -44,7 +44,7 @@ const AtividadeScreen = ({ route, navigation }) => {
   useEffect(() => {
     route.params.userType == 'Pais' ? setCards(mockAtividades) 
     : setCards(mockPacientes);
-  }, []);
+  }, [userType]);
 
   const handleAtividadePress = (atividade) => {
     var userType = route.params.userType

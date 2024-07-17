@@ -47,7 +47,7 @@ const AtividadeDetalhesScreen = ({ route, navigation }) => {
   // TO DO => IN CASE userType == Profissional ===> queremos mostrar tela de atividaes e cadastro de atividades, caso clique 
   //em atividades, vai para atividades como em userType == Pais
 
-  const cardName = route.params.name;
+  const atividade = route.params.atividade;
   const theme = useTheme();
 
   return (
@@ -56,7 +56,7 @@ const AtividadeDetalhesScreen = ({ route, navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color={theme.colors.surface} />
         </TouchableOpacity>
-        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{cardName}</Text>
+        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{atividade.title}</Text>
       </View>
       <Tab.Navigator
         screenOptions={{
