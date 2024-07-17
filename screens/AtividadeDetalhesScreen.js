@@ -39,8 +39,11 @@ const Comentarios = () => (
 
 const AtividadeDetalhesScreen = ({ route, navigation }) => {
   const { atividadeTitle } = route.params;
+
   const { userType } = route.params;
 
+  const cardName = route.params.name;
+  console.log(cardName, ":::")
   const theme = useTheme();
 
   return (
@@ -49,7 +52,7 @@ const AtividadeDetalhesScreen = ({ route, navigation }) => {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color={theme.colors.surface} />
         </TouchableOpacity>
-        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{atividadeTitle}</Text>
+        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{cardName}</Text>
       </View>
       <Tab.Navigator
         screenOptions={{
@@ -70,14 +73,13 @@ const styles = StyleSheet.create({
     padding: '5%',
   },
   header: {
-    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: '5%',
-    height: '10%',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    height: '15%',
   },
   headerText: {
-    fontSize: 24,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   inputContainer: {

@@ -46,9 +46,9 @@ const AtividadeScreen = ({ route, navigation }) => {
     : setCards(mockPacientes);
   }, []);
 
-  const handleAtividadePress = (therapistName) => {
+  const handleAtividadePress = (name) => {
     var userType = route.params.userType
-    navigation.navigate('AtividadeDetalhes', { userType, therapistName });
+    navigation.navigate('AtividadeDetalhes', { userType, name });
   };
   const handleInicioPress = () => {
     navigation.navigate('Home');
@@ -56,6 +56,7 @@ const AtividadeScreen = ({ route, navigation }) => {
 
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
+      
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color={theme.colors.surface} />
@@ -66,7 +67,7 @@ const AtividadeScreen = ({ route, navigation }) => {
    
         {cards.map((atividade, index) => (
 
-          <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.name)} 
+          <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.title)} 
           style={userType == 'Pais' ? styles.cardContainer : styles.cardContainerPaciente}>
           
           <AtividadeCard key={index} title={atividade.title} rating={atividade.rating} image={atividade.image}/>
