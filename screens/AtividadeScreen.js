@@ -46,12 +46,18 @@ const AtividadeScreen = ({ route, navigation }) => {
     : setCards(mockPacientes);
   }, []);
 
-  const handleAtividadePress = (name) => {
+  const handleAtividadePress = (atividade) => {
     var userType = route.params.userType
-    navigation.navigate('AtividadeDetalhes', { userType, name });
+    navigation.navigate('AtividadeDetalhes', { userType, atividade });
   };
+
   const handleInicioPress = () => {
     navigation.navigate('Home');
+  };
+
+  const handlePacientePress = (atividade) => {
+    var userType = route.params.userType
+    navigation.navigate('PacienteDetalhesScreen', { userType, atividade });
   };
 
   return (
@@ -63,11 +69,13 @@ const AtividadeScreen = ({ route, navigation }) => {
         </TouchableOpacity>
         <Text style={[styles.headerText, { color: theme.colors.surface }]}>{therapistName}</Text>
       </View>
+      
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
    
         {cards.map((atividade, index) => (
 
-          <TouchableOpacity key={index} onPress={() => handleAtividadePress(atividade.title)} 
+          <TouchableOpacity key={index} onPress={() => userType == 'Pais'? 
+            handleAtividadePress(atividade):handlePacientePress(atividade) } 
           style={userType == 'Pais' ? styles.cardContainer : styles.cardContainerPaciente}>
           
           <AtividadeCard key={index} title={atividade.title} rating={atividade.rating} image={atividade.image}/>
@@ -76,20 +84,17 @@ const AtividadeScreen = ({ route, navigation }) => {
         
         ))}
       </ScrollView>
+      
+      
       <View style={[styles.footer, { backgroundColor: theme.colors.primary }]}>
-
         <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
           <Ionicons name="home-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Principal</Text>
 
         </TouchableOpacity>
-        
-        
-        <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>
-          
+        <TouchableOpacity onPress={() => handleInicioPress()} style={styles.footerItem}>          
           <Ionicons name="settings-outline" size={30} color={theme.colors.surface} />
           <Text style={[styles.footerText, { color: theme.colors.surface }]}>Configurações</Text>
-        
         </TouchableOpacity>
         
       </View>
