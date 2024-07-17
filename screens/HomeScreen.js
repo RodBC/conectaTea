@@ -14,7 +14,7 @@ const HomeScreen = ({ navigation }) => {
   const [loginVisible, setLoginVisible] = useState(false);
   const [registerVisible, setRegisterVisible] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [userEmail, setUserEmail] = useState('');
+  const [userEmail, setUserEmail] = useState('Rodrigo');
 
   const handleLoginPress = () => {
     setLoginVisible(true);

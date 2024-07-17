@@ -36,7 +36,7 @@ const mockConsultasProfissional = [
 
 const ConsultaScreen = ({ route, navigation }) => {
   const theme = useTheme();
-  const { therapistName } = route.params;
+  const { userEmail } = route.params;
   const [consultas, setConsultas] = useState([]);  
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const ConsultaScreen = ({ route, navigation }) => {
   return (
     <View style={[styles.container, { backgroundColor: theme.colors.background }]}>
       <View style={[styles.header, { backgroundColor: theme.colors.primary }]}>
-        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{"userEmail"}</Text>
+        <Text style={[styles.headerText, { color: theme.colors.surface }]}>{` bem vindo ${userEmail}!`}</Text>
       </View>
       
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
